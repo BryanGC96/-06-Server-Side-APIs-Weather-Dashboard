@@ -51,3 +51,24 @@ main {
     flex: 1;
     padding-left: 1%;
 }
+
+div.card {
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: rgb(0, 0, 0);
+    border-width: 5px;
+    margin-top: 1%;
+    margin-right: 5%;
+    margin-left: 2%;
+}
+
+.card-title {
+    font-weight: bolder;
+    font-size: xxx-large;
+}
+
+.FiveDayForecast {
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
