@@ -1,5 +1,5 @@
 var APIKey = "6d92c2af99da65eb1140112bd23cda4a";
-var city = "Chicago";
+var city = "Monterrey";
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey; //Current day Forecast 
 var currentDate = dayjs().format("M/DD/YYYY");
 var currentDateObject = dayjs(currentDate); //It takes the same format of the current day, but instead of having it a a string, is change to an object, so that i can be able to ".add" days using dayjs + 1 .
@@ -22,13 +22,14 @@ fetch(queryURL)
         var humidity = data.main.humidity;
         var latitude = data.coord.lat;
         var longitude = data.coord.lon;
-        var iconMain = data.weather[0].icon
+        var iconMainCode = data.weather[0].icon; //Obtains the code of the weather icon depending on the actual weather.
         console.log(cityName);
         document.getElementById("city-name-one").innerHTML = cityName + " " + currentDate; //updates the city name in the "Big" card.
         document.getElementById("temp-one").innerHTML = "Temperature: " + tempCelsius.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
         document.getElementById("wind-one").innerHTML = "Wind: " + windSpeed.toFixed(3) + " kph";
         document.getElementById("humidity-one").innerHTML = "Humidity: " + humidity + "%";
-        document.getElementById("iconMain").innerHTML = iconMain;
+        document.getElementById("iconMain").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconMainCode + '.png" alt="Weather Icon" class="img-thumbnail">'; //Transforms the #code given, to the actual img and place it in the html with the thumbnail class.
+
         return fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey);//5 Day weather forecast fetch
     })
 
@@ -42,6 +43,15 @@ fetch(queryURL)
 
     .then(function(data) {
         console.log(data);//Logs the data from the 5 day weather forecast.
+
+        //Get the corresponding code for the weather icon.
+        var iconOneCode = data.list[0].weather[0].icon;
+        var iconTwoCode = data.list[1].weather[0].icon;
+        var iconThreeCode = data.list[2].weather[0].icon;
+        var iconFourCode = data.list[3].weather[0].icon;
+        var iconFiveCode = data.list[4].weather[0].icon;
+
+
         //Takes the current day object, and adds days correspondly.
         var datePlusOne = currentDateObject.add(1, 'day').format("M/DD/YYYY");
         var datePlusTwo = currentDateObject.add(2, 'days').format("M/DD/YYYY");
@@ -102,6 +112,13 @@ fetch(queryURL)
         document.getElementById("dayPlusThree").innerHTML = datePlusThree;
         document.getElementById("dayPlusFour").innerHTML = datePlusFour;
         document.getElementById("dayPlusFive").innerHTML = datePlusFive;
+
+        document.getElementById("iconOne").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconOneCode + '.png" alt="Weather Icon">'; //Transforms the #code given, to the actual img.
+        document.getElementById("iconTwo").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconTwoCode + '.png" alt="Weather Icon">'; //Transforms the #code given, to the actual img.
+        document.getElementById("iconThree").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconThreeCode + '.png" alt="Weather Icon">'; //Transforms the #code given, to the actual img.
+        document.getElementById("iconFour").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconFourCode + '.png" alt="Weather Icon">'; //Transforms the #code given, to the actual img.
+        document.getElementById("iconFive").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconFiveCode + '.png" alt="Weather Icon">'; //Transforms the #code given, to the actual img.
+
 
 
     })
