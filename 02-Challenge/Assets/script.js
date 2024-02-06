@@ -22,11 +22,13 @@ fetch(queryURL)
         var humidity = data.main.humidity;
         var latitude = data.coord.lat;
         var longitude = data.coord.lon;
+        var iconMain = data.weather[0].icon
         console.log(cityName);
         document.getElementById("city-name-one").innerHTML = cityName + " " + currentDate; //updates the city name in the "Big" card.
         document.getElementById("temp-one").innerHTML = "Temperature: " + tempCelsius.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
         document.getElementById("wind-one").innerHTML = "Wind: " + windSpeed.toFixed(3) + " kph";
         document.getElementById("humidity-one").innerHTML = "Humidity: " + humidity + "%";
+        document.getElementById("iconMain").innerHTML = iconMain;
         return fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey);//5 Day weather forecast fetch
     })
 
@@ -46,6 +48,55 @@ fetch(queryURL)
         var datePlusThree = currentDateObject.add(3, 'days').format("M/DD/YYYY");
         var datePlusFour = currentDateObject.add(4, 'days').format("M/DD/YYYY");
         var datePlusFive = currentDateObject.add(5, 'days').format("M/DD/YYYY");
+
+        //Defines variables from the next Five Days Weather Forecast:
+        var tempKelvinOne = data.list[0].main.temp;
+        var tempCelsiusOne = tempKelvinOne -273.15; 
+        var windOne = data.list[0].wind.speed * 1.60934;//converts 'MPH' to 'kph'.
+        var humidityOne = data.list[0].main.humidity;
+        
+        var tempKelvinTwo = data.list[1].main.temp;
+        var tempCelsiusTwo = tempKelvinTwo -273.15; 
+        var windTwo = data.list[1].wind.speed * 1.60934;//converts 'MPH' to 'kph'.
+        var humidityTwo = data.list[1].main.humidity;
+        
+        var tempKelvinThree = data.list[2].main.temp;
+        var tempCelsiusThree = tempKelvinThree -273.15; 
+        var windThree = data.list[2].wind.speed * 1.60934;//converts 'MPH' to 'kph'.
+        var humidityThree = data.list[2].main.humidity;
+        
+        var tempKelvinFour = data.list[3].main.temp;
+        var tempCelsiusFour = tempKelvinFour -273.15; 
+        var windFour = data.list[3].wind.speed * 1.60934;//converts 'MPH' to 'kph'.
+        var humidityFour = data.list[3].main.humidity;
+        
+        var tempKelvinFive = data.list[4].main.temp;
+        var tempCelsiusFive = tempKelvinFive -273.15; 
+        var windFive = data.list[4].wind.speed * 1.60934;//converts 'MPH' to 'kph'.
+        var humidityFive = data.list[4].main.humidity;
+
+
+        document.getElementById("tempOne").innerHTML = "Temperature: " + tempCelsiusOne.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
+        document.getElementById("windOne").innerHTML = "Wind: " + windOne.toFixed(3) + " kph";
+        document.getElementById("HumidityOne").innerHTML = "Humidity: " + humidityOne + "%";
+
+        document.getElementById("tempTwo").innerHTML = "Temperature: " + tempCelsiusTwo.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
+        document.getElementById("windTwo").innerHTML = "Wind: " + windTwo.toFixed(3) + " kph";
+        document.getElementById("HumidityTwo").innerHTML = "Humidity: " + humidityTwo + "%";
+
+        document.getElementById("tempThree").innerHTML = "Temperature: " + tempCelsiusThree.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
+        document.getElementById("windThree").innerHTML = "Wind: " + windThree.toFixed(3) + " kph";
+        document.getElementById("HumidityThree").innerHTML = "Humidity: " + humidityThree + "%";
+
+        document.getElementById("tempFour").innerHTML = "Temperature: " + tempCelsiusFour.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
+        document.getElementById("windFour").innerHTML = "Wind: " + windFour.toFixed(3) + " kph";
+        document.getElementById("HumidityFour").innerHTML = "Humidity: " + humidityFour + "%";
+
+        document.getElementById("tempFive").innerHTML = "Temperature: " + tempCelsiusFive.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
+        document.getElementById("windFive").innerHTML = "Wind: " + windFive.toFixed(3) + " kph";
+        document.getElementById("HumidityFive").innerHTML = "Humidity: " + humidityFive + "%";
+
+
         document.getElementById("dayPlusOne").innerHTML = datePlusOne;
         document.getElementById("dayPlusTwo").innerHTML = datePlusTwo;
         document.getElementById("dayPlusThree").innerHTML = datePlusThree;
@@ -57,6 +108,12 @@ fetch(queryURL)
 
     .catch(function(error) {
         console.error("Error during fetch operation", error);//Indicates there was an error (somewhere) during the fetch operation.
+    })
+
+    $(document).ready(function() {
+        $("#searchButton").on("click", function() {
+            alert("Button Clicked!");
+        })
     })
 
     

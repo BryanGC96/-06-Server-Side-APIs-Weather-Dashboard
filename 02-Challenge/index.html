@@ -18,8 +18,8 @@
 
         <div class="side-search col-mb-3 p-1 m-2 w-100 p-3">
             <label for="formGroupExampleInput" class="form-label d-flex ">Search for a City:</label>
-            <input type="text" class="form-control mt-3" id="formGroupExampleInput" placeholder="Example input placeholder">
-            <button type="button" class="btn btn-primary btn-lg mt-3">Search</button>
+            <input type="text" class="form-control mt-3" id="formGroupExampleInput" placeholder="Write City Name">
+            <button type="button" class="btn btn-primary btn-lg mt-3" id="searchButton">Search</button>
             <ul id="searchResult"></ul>
         </div>
     </aside>
@@ -29,6 +29,8 @@
             <div class="card-body">
               <h5 class="card-title" id="city-name-one"></h5>
               <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="iconMain">  <img src="http://openweathermap.org/img/wn/04n.png" alt="Weather Icon">
+                </li>
                 <li class="list-group-item" id="temp-one"></li>
                 <li class="list-group-item" id="wind-one"></li>
                 <li class="list-group-item" id="humidity-one"></li>
@@ -40,57 +42,62 @@
             <h5 class="fs-1 fw-bold">5-Day Forecast</h5>
             <div class="row row-cols-1 row-cols-md-5 g-">
                 <div class="col">
-                  <div class="card h-100">
+                  <div class="card h-100 bg-secondary bg-gradient text-white">
                     <div class="card-body">
                       <h5 class="card-title fs-2" id="dayPlusOne"></h5>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item bg-secondary bg-gradient" id="iconOne"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="tempOne"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="windOne"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="HumidityOne"></li>
                       </ul>                    </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="card h-100">
+                  <div class="card h-100 bg-secondary bg-gradient text-white">
                     <div class="card-body">
                       <h5 class="card-title fs-2" id="dayPlusTwo"></h5>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item bg-secondary bg-gradient" id="iconTwo"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="tempTwo"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="windTwo"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="HumidityTwo"></li>
                       </ul>                    </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="card h-100">
+                  <div class="card h-100 bg-secondary bg-gradient text-white">
                     <div class="card-body">
                       <h5 class="card-title fs-2" id="dayPlusThree"></h5>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item bg-secondary bg-gradient" id="iconThree"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="tempThree"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="windThree"></li>
+                        <li class="list-group-item bg-secondary bg-gradient text-white" id="HumidityThree"></li>
                       </ul>                    </div>
                   </div>
                 </div>
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 bg-secondary bg-gradient text-white">
                       <div class="card-body">
                         <h5 class="card-title fs-2" id="dayPlusFour"></h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item bg-secondary bg-gradient" id="iconFour"></li>
+                            <li class="list-group-item bg-secondary bg-gradient text-white" id="tempFour"></li>
+                            <li class="list-group-item bg-secondary bg-gradient text-white" id="windFour"></li>
+                            <li class="list-group-item bg-secondary bg-gradient text-white" id="HumidityFour"></li>
                           </ul>                      </div>
                     </div>
                   </div>
                   <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 bg-secondary bg-gradient text-white">
                       <div class="card-body">
                         <h5 class="card-title fs-2" id="dayPlusFive"></h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item bg-secondary bg-gradient" id="iconFive"></li>
+                            <li class="list-group-item bg-secondary bg-gradient text-white" id="tempFive"></li>
+                            <li class="list-group-item bg-secondary bg-gradient text-white" id="windFive"></li>
+                            <li class="list-group-item bg-secondary bg-gradient text-white" id="HumidityFive"></li>
                           </ul>                      </div>
                     </div>
                   </div>
