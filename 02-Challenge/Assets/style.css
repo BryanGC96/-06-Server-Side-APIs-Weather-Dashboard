@@ -14,7 +14,6 @@
 .side-search {
     min-width: 140px;
     width: 30%;
-    background-color: chartreuse;
 }
 
 .form-label {
@@ -23,7 +22,6 @@
     padding-left: 1%;
     font-weight: 700;
     font-size: 2em;
-    background-color: aqua;
 }
 
 #formGroupExampleInput {
@@ -32,6 +30,10 @@
     font-size:x-large;
 }
 
+#searchResult {
+    justify-content: center;
+    margin-right: 4em;
+}
 .btn {
     display: flex;
     width: 100%
@@ -71,3 +73,8 @@ div.card {
     margin-left: 2%;
     margin-top: 1%;
 }
+
+.hidden {
+    display: none; /*hides the content inside <main>*/
+}
+

@@ -19,12 +19,13 @@
         <div class="side-search col-mb-3 p-1 m-2 w-100 p-3">
             <label for="formGroupExampleInput" class="form-label d-flex ">Search for a City:</label>
             <input type="text" class="form-control mt-3" id="formGroupExampleInput" placeholder="Write City Name">
-            <button type="button" class="btn btn-primary btn-lg mt-3" id="searchButton">Search</button>
+            <button type="button" class="btn btn-primary btn-lg mt-3 mb-2" id="searchButton">Search</button>
+            <button class="btn btn-primary mb-4 btn-danger" id="clearHistoryBtn" type="button">Clear History</button>
             <ul id="searchResult"></ul>
         </div>
     </aside>
 
-    <main>
+    <main id="main-content" class="hidden">
         <div class="card">
             <div class="card-body">
               <h5 class="card-title" id="city-name-one"></h5>

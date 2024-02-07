@@ -1,10 +1,24 @@
-var APIKey = "6d92c2af99da65eb1140112bd23cda4a";
-var city = "Monterrey";
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey; //Current day Forecast 
-var currentDate = dayjs().format("M/DD/YYYY");
-var currentDateObject = dayjs(currentDate); //It takes the same format of the current day, but instead of having it a a string, is change to an object, so that i can be able to ".add" days using dayjs + 1 .
+//Added a Button to errase the localStorage.
+$("#clearHistoryBtn").on("click", function() {
+    localStorage.clear();
+    $("#searchResult").empty(); //Also empty the allready created dinamically.
+});
 
-fetch(queryURL)
+    $(document).ready(function() { //It ensures to run the jQuery when the doccument its fully loaded.
+        $("#searchButton").on("click", function() {
+            $("#main-content").removeClass("hidden");//Changes the 'display' inside CSS '.hidden' to "display" , by removing the class from the <main> in HTML.
+            var APIKey = "6d92c2af99da65eb1140112bd23cda4a";
+            var cityName = $("#formGroupExampleInput").val(); //Defines the variable depending on what is written inside the Input.
+            var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey; //Current day Forecast 
+            var currentDate = dayjs().format("M/DD/YYYY");
+            var currentDateObject = dayjs(currentDate); 
+
+            saveSearch(cityName);
+
+            displaySavedSearches();
+
+            fetch(queryURL)
+
     .then(function(response) {
         if (!response.ok) {
             throw new Error("Network response was not ok"); //works incase theres no response in the fetch.
@@ -119,18 +133,35 @@ fetch(queryURL)
         document.getElementById("iconFour").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconFourCode + '.png" alt="Weather Icon">'; //Transforms the #code given, to the actual img.
         document.getElementById("iconFive").innerHTML = '<img src="http://openweathermap.org/img/wn/' + iconFiveCode + '.png" alt="Weather Icon">'; //Transforms the #code given, to the actual img.
 
-
-
     })
 
     .catch(function(error) {
         console.error("Error during fetch operation", error);//Indicates there was an error (somewhere) during the fetch operation.
-    })
+    });
+        });
+    });
 
-    $(document).ready(function() {
-        $("#searchButton").on("click", function() {
-            alert("Button Clicked!");
-        })
-    })
+    //Saves searches to the localStorage in the key=searches
+    function saveSearch(cityName) {
+        var searches = JSON.parse(localStorage.getItem("searches")) || [];
+        searches.push(cityName);
+        localStorage.setItem("searches", JSON.stringify(searches));
+    };
 
+    //Function to display saved searches from local storage.
+    function displaySavedSearches() {
+        $("#searchResult").empty(); //Clear the existing search result list
+        var searches = JSON.parse(localStorage.getItem("searches")) || []; //Retrieve saved searches from local storage
+
+        searches.forEach(function(cityName) {
+            var $ul = $("<ul>").addClass("row").prependTo("#searchResult"); //Creates a <ul> element from the current search, prepending it.
+            $("<li>").text(cityName).addClass("btn btn-outline-secondary col text-center mb-3 fs-3").appendTo($ul) //Adds the 'cityName' as a list item.
+            .click(function() {
+                $("#formGroupExampleInput").val(cityName);
+                $("#searchButton").click();
+            })
+        });
+    };
+
+    displaySavedSearches(); //Displays the saveSearches whenever the page is ready, and not only after the eventListener.
     
