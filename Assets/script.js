@@ -1,7 +1,7 @@
 //Added a Button to errase the localStorage.
 $("#clearHistoryBtn").on("click", function() {
     localStorage.clear();
-    $("#searchResult").empty(); //Also empty the allready created dinamically.
+    $("#searchResult").empty(); //Also empty the allready created dynamically.
 });
 
     $(document).ready(function() { //It ensures to run the jQuery when the doccument its fully loaded.
@@ -21,14 +21,13 @@ $("#clearHistoryBtn").on("click", function() {
 
     .then(function(response) {
         if (!response.ok) {
-            throw new Error("Network response was not ok"); //works incase theres no response in the fetch.
+            throw new Error("Network response was not OK"); //works incase theres no response in the fetch.
         }
 
         return response.json();//converts the data of the fetch to JSON.
     })
     
     .then(function(data) {
-        console.log(data);//Logs the data from the present weather forecast.
         var cityName = data.name;
         var tempKelvin = data.main.temp;
         var tempCelsius = tempKelvin -273.15;//takes the original value of temperature, and transform it to celsius by doing the convertion -273.15.
@@ -37,7 +36,6 @@ $("#clearHistoryBtn").on("click", function() {
         var latitude = data.coord.lat;
         var longitude = data.coord.lon;
         var iconMainCode = data.weather[0].icon; //Obtains the code of the weather icon depending on the actual weather.
-        console.log(cityName);
         document.getElementById("city-name-one").innerHTML = cityName + " " + currentDate; //updates the city name in the "Big" card.
         document.getElementById("temp-one").innerHTML = "Temperature: " + tempCelsius.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
         document.getElementById("wind-one").innerHTML = "Wind: " + windSpeed.toFixed(3) + " kph";
@@ -49,14 +47,13 @@ $("#clearHistoryBtn").on("click", function() {
 
     .then(function(response) {
         if (!response.ok) {
-            throw new Error("Network response was not ok");//works incase theres no response in the fetch.
+            throw new Error("Network response was not OK");//works incase theres no response in the fetch.
         }
 
         return response.json();//converts the data of the fetch to JSON.
     })
 
     .then(function(data) {
-        console.log(data);//Logs the data from the 5 day weather forecast.
 
         //Get the corresponding code for the weather icon.
         var iconOneCode = data.list[0].weather[0].icon;
@@ -64,7 +61,6 @@ $("#clearHistoryBtn").on("click", function() {
         var iconThreeCode = data.list[2].weather[0].icon;
         var iconFourCode = data.list[3].weather[0].icon;
         var iconFiveCode = data.list[4].weather[0].icon;
-
 
         //Takes the current day object, and adds days correspondly.
         var datePlusOne = currentDateObject.add(1, 'day').format("M/DD/YYYY");
@@ -99,7 +95,6 @@ $("#clearHistoryBtn").on("click", function() {
         var windFive = data.list[4].wind.speed * 1.60934;//converts 'MPH' to 'kph'.
         var humidityFive = data.list[4].main.humidity;
 
-
         document.getElementById("tempOne").innerHTML = "Temperature: " + tempCelsiusOne.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
         document.getElementById("windOne").innerHTML = "Wind: " + windOne.toFixed(3) + " kph";
         document.getElementById("HumidityOne").innerHTML = "Humidity: " + humidityOne + "%";
@@ -119,7 +114,6 @@ $("#clearHistoryBtn").on("click", function() {
         document.getElementById("tempFive").innerHTML = "Temperature: " + tempCelsiusFive.toFixed(0) + "°C";// toFixed, decides how many decimals i want it to show.
         document.getElementById("windFive").innerHTML = "Wind: " + windFive.toFixed(3) + " kph";
         document.getElementById("HumidityFive").innerHTML = "Humidity: " + humidityFive + "%";
-
 
         document.getElementById("dayPlusOne").innerHTML = datePlusOne;
         document.getElementById("dayPlusTwo").innerHTML = datePlusTwo;
@@ -164,4 +158,3 @@ $("#clearHistoryBtn").on("click", function() {
     };
 
     displaySavedSearches(); //Displays the saveSearches whenever the page is ready, and not only after the eventListener.
-    
