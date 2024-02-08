@@ -1,4 +1,4 @@
-# -06-Server-Side-APIs-Weather-Dashboard
+# Server-Side-APIs-Weather-Dashboard
 Dynamic Weather Dashboard
 
 This project was created to present a website, in wich the user can search for the actual weather of a city of the world;
