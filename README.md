@@ -9,7 +9,7 @@ The final result was achieved by using 2 APIS:
     -The "Current Weather Data".
     -The "5 Day Forecast".
 
-To use this application, the user need only to go to the provided URL:" " , 
+To use this application, the user need only to go to the provided URL:" https://bryangc96.github.io/-06-Server-Side-APIs-Weather-Dashboard/ " , 
 and write the name of a City in the input, then press the "Search" button.
 
 The user can then navigate through past searches by clicking on the name in the generated list; and can easily delete the search history by clicking the red "clear history" button.
